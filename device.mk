@@ -1,6 +1,29 @@
 LOCAL_PATH := device/infinix/x657b
 
 # A/B
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    gz \
+    lk \
+    logo \
+    md1img \
+    preloader \
+    product \
+    scp \
+    spmfw \
+    sspm \
+    system \
+    system_ext \
+    tee \
+    vbmeta \
+    vbmeta_system \
+    vbmeta_vendor \
+    vendor \
+    vendor_boot
+
+
+# A/B
 AB_OTA_POSTINSTALL_CONFIG += \
    RUN_POSTINSTALL_system=true \
    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -69,6 +92,17 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
     libxml2
 
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+
+PRODUCT_PACKAGES_DEBUG += \
+    update_engine_client
+
+PRODUCT_PACKAGES += \
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
+
+# OEM otacerts
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(LOCAL_PATH)/security/infinix
