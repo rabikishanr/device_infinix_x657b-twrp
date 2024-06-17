@@ -1,0 +1,2 @@
+add_lunch_combo twrp_x657b-userdebug
+add_lunch_combo twrp_x657b-eng
