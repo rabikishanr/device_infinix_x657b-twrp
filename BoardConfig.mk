@@ -1,28 +1,14 @@
 #
 # Copyright (C) 2024 The Android Open Source Project
+# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/infinix/x657b
+DEVICE_PATH := device/infinix/Infinix-X657B
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
-
-
-BOARD_USES_RECOVERY_AS_BOOT := true
-
-
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    system \
-    system_ext \
-    vendor \
-    product \
-    boot \
-    vbmeta_vendor \
-    vbmeta_system
 
 # Architecture
 TARGET_ARCH := arm
@@ -38,7 +24,7 @@ TARGET_USES_64_BIT_BINDER := true
 OVERRIDE_TARGET_FLATTEN_APEX := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := x657b
+TARGET_BOOTLOADER_BOARD_NAME := Infinix-X657B
 TARGET_NO_BOOTLOADER := true
 
 # Display
@@ -57,8 +43,8 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
-TARGET_KERNEL_CONFIG := x657b_defconfig
-TARGET_KERNEL_SOURCE := kernel/infinix/x657b
+TARGET_KERNEL_CONFIG := Infinix-X657B_defconfig
+TARGET_KERNEL_SOURCE := kernel/infinix/Infinix-X657B
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
@@ -115,46 +101,3 @@ TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
-TW_INCLUDE_REPACKTOOLS := true
-TWRP_INCLUDE_LOGCAT := true
-TARGET_USES_LOGD := true
-TARGET_USES_MKE2FS := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-TW_INCLUDE_FASTBOOTD := true
-TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_LIBRESETPROP := true
-TW_EXCLUDE_TWRPAPP := true
-
-# StatusBar
-TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := "300"
-TW_CUSTOM_CLOCK_POS := "70"
-TW_CUSTOM_BATTERY_POS := "790"
-
-# Device
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_DEFAULT_BRIGHTNESS := 800
-TW_MAX_BRIGHTNESS := 1200
-TW_FRAMERATE := 60
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-RECOVERY_SDCARD_ON_DATA := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
-TW_HAS_NO_RECOVERY_PARTITION := true
-TW_EXCLUDE_APEX := true
-TW_BACKUP_EXCLUSIONS := /data/fonts
-
-# exFAT FS Support
-TW_INCLUDE_FUSE_EXFAT := true
-
-# NTFS Support
-TW_INCLUDE_FUSE_NTFS := true
-
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-
-# Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
