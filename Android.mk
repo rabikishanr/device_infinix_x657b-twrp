@@ -7,6 +7,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),Infinix-X657B)
+ifeq ($(TARGET_DEVICE),x657b)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif
